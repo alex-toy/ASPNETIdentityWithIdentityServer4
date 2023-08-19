@@ -68,9 +68,37 @@ dotnet run IdentityServer/bin/Debug/net6.0/IdentityServer /seed --project Identi
 - Discovery Document: https://localhost:5443/.well-known/openid-configuration
 <img src="/pictures/openid-configuration.png" title="openid-configuration"  width="900">
 
-18. Setup the IdentityServer authentication flow
-     - https://github.com/IdentityServer/Ide...
-19. Update IdentityServer QuickStart code
-20. Setup Program.cs for integration with the QuickStart code (Server)
 
+
+### Setting up the Blazor Server (Client) project
+
+We are going to add authentication and authorization to a **Blazor** Server app with **IdentityServer4**. The aim is to simplify the process of securing a Blazor application, showing how to generate JWT tokens and restrict user access based on their authentication state.
+
+1. Setup a new Blazor Server project
+2. Add a new Blazor Component
+3. Setup IdentityServer4 Authorization within the API
+```
+Install-Package IdentityServer4.AccessTokenValidation -Version 3.0.1
+```
+4. Setup the Blazor Server for JWT Generation
+```
+Install-Package IdentityModel -Version 5.2.0
+```
+5. Add a Bearer Token to a Http Request
+6. Secure Blazor Server with IdentityServer4 (Authorization)
+
+
+
+### Secure the Client app with IdentityServer4
+
+7. Setup Authentication and OIDC (Client)
+```
+Install-Package Microsoft.AspNetCore.Authentication.OpenIdConnect -Version 6.0.1
+Install-Package Microsoft.AspNetCore.Components.Authorization -Version 6.0.1
+```
+8. Add a Login and Logout Razor pages
+9. Add Login Redirect Blazor Component
+10. Setup App.razor to enable Authorization
+11. Show/Hide the NavMenu items based on Authorization
+12. Authorize a Blazor component
 
