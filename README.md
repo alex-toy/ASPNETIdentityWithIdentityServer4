@@ -60,13 +60,13 @@ Add-Migration AspNetIdentityDbContextMigrations -Context AspNetIdentityDbContext
 Update-Database -Context AspNetIdentityDbContext
 ```
 
-- Discovery Document: https://localhost:5443/.well-known/openid-configuration
-<img src="/pictures/openid-configuration.png" title="openid-configuration"  width="900">
-
 - seed project
 ```
 dotnet run IdentityServer/bin/Debug/net6.0/IdentityServer /seed --project IdentityServer
 ```
+
+- Discovery Document: https://localhost:5443/.well-known/openid-configuration
+<img src="/pictures/openid-configuration.png" title="openid-configuration"  width="900">
 
 18. Setup the IdentityServer authentication flow
      - https://github.com/IdentityServer/Ide...
