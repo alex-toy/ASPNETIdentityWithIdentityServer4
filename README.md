@@ -5,16 +5,26 @@ In this project, we will see how to Configure ASP.NET Identity with Identity Ser
 
 ## Setup the API 
 
-### Setup a ClassLibrary project for the Database
-
-- run command
+- install packages in *CoffeeShopAPI*
 ```
 Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.1
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
 ```
 
-- check that all templates have been installed
-<img src="/pictures/templates.png" title="templates"  width="900">
+- install packages in *DataAccess*
+```
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.1
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
+```
+
+- Migrations
+```
+Add-Migration InitialCreate
+Update-Database
+```
+
+- run the project
+<img src="/pictures/coffeeshop.png" title="coffee shop"  width="900">
 
 
 ## Setting up the Identity Server (Server) project
@@ -45,3 +55,16 @@ Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
      - https://github.com/IdentityServer/Ide...
 19. Update IdentityServer QuickStart code
 20. Setup Program.cs for integration with the QuickStart code (Server)
+
+
+
+
+
+
+
+
+
+
+
+
+- check that all templates have been installed
