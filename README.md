@@ -28,43 +28,49 @@ Update-Database
 
 
 ## Setting up the Identity Server (Server) project
-8. Add an empty ASP.NET Web Project to the Solution
-9. Install IdentityServer4 Dependencies 
-     Install-Package IdentityServer4 -Version 4.1.2
-     Install-Package IdentityServer4.EntityFramework -Version 4.1.2
-     Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
-     Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.1
-     Install-Package Microsoft.AspNetCore.Identity.UI -Version 6.0.1
-     Install-Package IdentityServer4.AspNetIdentity -Version 4.1.2
-     Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 6.0.1
-10. Add Connection String to appsettings.json
-11. Configure Program.cs
-12. Create IdentityServer migrations (Default project: Server)
-13. Update the IdentityServer Databases
-14. Add ASP.NET Identity to the Server project 
-15. Add ASP.NET Identity migrations (Server proj) and run them
-     Add-Migration InitialAspNetIdentityMigration -Context AspNetIdentityDbContext
-     Update-Database -Context AspNetIdentityDbContext
-     Discovery Document: https://localhost:5443/.well-known/openid-configuration
-16. Add IdentityServer4 Configuration and SeedData
-     - Seed.cs template: https://github.com/IdentityServer/Ide...
-     - Config.cs template: https://github.com/kevinrjones/Settin...
-17. Setup the IdentityServer Seeding process
-     - dotnet run Server/bin/Debug/net6.0/Server /seed --project Server
+
+### Install IdentityServer4 Dependencies 
+```
+Install-Package IdentityServer4 -Version 4.1.2
+Install-Package IdentityServer4.EntityFramework -Version 4.1.2
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.1
+Install-Package Microsoft.AspNetCore.Identity.UI -Version 6.0.1
+Install-Package IdentityServer4.AspNetIdentity -Version 4.1.2
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore -Version 6.0.1
+```
+
+- PersistedGrantDbContext Migrations
+```
+Add-Migration seedData -Context PersistedGrantDbContext
+Update-Database -Context PersistedGrantDbContext
+```
+
+- ConfigurationDbContext Migrations
+```
+Add-Migration ConfigurationDbContextMigration -Context ConfigurationDbContext
+Update-Database -Context ConfigurationDbContext
+```
+
+### Add IdentityServer4 Configuration and SeedData
+
+- AspNetIdentityDbContext Migrations
+```
+Add-Migration AspNetIdentityDbContextMigrations -Context AspNetIdentityDbContext
+Update-Database -Context AspNetIdentityDbContext
+```
+
+- Discovery Document: https://localhost:5443/.well-known/openid-configuration
+<img src="/pictures/openid-configuration.png" title="openid-configuration"  width="900">
+
+- seed project
+```
+dotnet run IdentityServer/bin/Debug/net6.0/IdentityServer /seed --project IdentityServer
+```
+
 18. Setup the IdentityServer authentication flow
      - https://github.com/IdentityServer/Ide...
 19. Update IdentityServer QuickStart code
 20. Setup Program.cs for integration with the QuickStart code (Server)
 
 
-
-
-
-
-
-
-
-
-
-
-- check that all templates have been installed
