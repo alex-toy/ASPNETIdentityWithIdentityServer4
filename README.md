@@ -93,6 +93,9 @@ Install-Package IdentityModel -Version 5.2.0
 
 6. Secure Blazor Server with IdentityServer4 (Authorization)
 
+- query the API without credentials
+<img src="/pictures/no_credentials.png" title="query the API without credentials"  width="900">
+
 
 
 ## Secure the Client app with IdentityServer4

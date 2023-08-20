@@ -1,4 +1,5 @@
 using Client.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 
-builder.Services.Configure<IdentityServerSettings>(builder.Configuration.GetSection("IdentityServerSettings"));
+IConfigurationSection identityServerSettings = builder.Configuration.GetSection("IdentityServerSettings");
+builder.Services.Configure<IdentityServerSettings>(identityServerSettings);
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
