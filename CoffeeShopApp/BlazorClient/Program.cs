@@ -1,4 +1,7 @@
 using Client.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +14,8 @@ builder.Services.AddHttpClient();
 IConfigurationSection identityServerSettings = builder.Configuration.GetSection("IdentityServerSettings");
 builder.Services.Configure<IdentityServerSettings>(identityServerSettings);
 builder.Services.AddScoped<ITokenService, TokenService>();
+
+SetAuthenticationBuilder(builder);
 
 var app = builder.Build();
 
@@ -32,3 +37,40 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+
+
+
+
+
+
+
+
+
+
+
+static void SetAuthenticationBuilder(WebApplicationBuilder builder)
+{
+    AuthenticationBuilder authenticationBuilder = builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+    });
+
+    authenticationBuilder.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+
+    authenticationBuilder.AddOpenIdConnect(
+        OpenIdConnectDefaults.AuthenticationScheme,
+        options =>
+        {
+            options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.SignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            options.Authority = builder.Configuration["InteractiveServiceSettings:AuthorityUrl"];
+            options.ClientId = builder.Configuration["InteractiveServiceSettings:ClientId"];
+            options.ClientSecret = builder.Configuration["InteractiveServiceSettings:ClientSecret"];
+
+            options.ResponseType = "code";
+            options.SaveTokens = true;
+            options.GetClaimsFromUserInfoEndpoint = true;
+        }
+    );
+}

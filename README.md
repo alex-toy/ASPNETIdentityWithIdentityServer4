@@ -115,3 +115,7 @@ Install-Package Microsoft.AspNetCore.Components.Authorization -Version 6.0.1
 5. Show/Hide the NavMenu items based on Authorization
 
 6. Authorize a Blazor component
+
+- login process
+<img src="/pictures/login.png" title="login process"  width="900">
+<img src="/pictures/login2.png" title="login process"  width="900">
