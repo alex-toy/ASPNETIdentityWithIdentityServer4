@@ -15,7 +15,9 @@ Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
 ```
 Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.1
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.1
+Install-Package IdentityServer4.AccessTokenValidation Version="3.0.1"
 ```
+
 
 - Migrations
 ```
@@ -79,7 +81,7 @@ We are going to add authentication and authorization to a **Blazor** Server app 
 
 3. Setup IdentityServer4 Authorization within the API
 ```
-Install-Package IdentityServer4.AccessTokenValidation -Version 3.0.1
+Install-Package IdentityServer4. AccessTokenValidation -Version 3.0.1
 ```
 
 4. Setup the Blazor Server for JWT Generation

@@ -21,7 +21,7 @@ namespace IdentityServer
         public static IEnumerable<ApiResource> ApiResources =>
             new[]
             {
-                new ApiResource("CoffeeAPI")
+                new ApiResource("CoffeeShopAPI")
                 {
                     Scopes = new List<string> { "CoffeeAPI.read", "CoffeeAPI.write" },
                     ApiSecrets = new List<Secret> { new Secret("ScopeSecret".Sha256()) },
