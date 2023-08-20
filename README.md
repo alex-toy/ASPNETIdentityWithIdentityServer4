@@ -70,35 +70,43 @@ dotnet run IdentityServer/bin/Debug/net6.0/IdentityServer /seed --project Identi
 
 
 
-### Setting up the Blazor Server (Client) project
+## Setting up the Blazor Server (Client) project
 
 We are going to add authentication and authorization to a **Blazor** Server app with **IdentityServer4**. The aim is to simplify the process of securing a Blazor application, showing how to generate JWT tokens and restrict user access based on their authentication state.
 
-1. Setup a new Blazor Server project
-2. Add a new Blazor Component
+1. Setup a new Blazor Server project.Add a new Blazor Component
+<img src="/pictures/blazor.png" title="blazor"  width="900">
+
 3. Setup IdentityServer4 Authorization within the API
 ```
 Install-Package IdentityServer4.AccessTokenValidation -Version 3.0.1
 ```
+
 4. Setup the Blazor Server for JWT Generation
 ```
 Install-Package IdentityModel -Version 5.2.0
 ```
+
 5. Add a Bearer Token to a Http Request
+
 6. Secure Blazor Server with IdentityServer4 (Authorization)
 
 
 
-### Secure the Client app with IdentityServer4
+## Secure the Client app with IdentityServer4
 
-7. Setup Authentication and OIDC (Client)
+1. Setup Authentication and OIDC (Client)
 ```
 Install-Package Microsoft.AspNetCore.Authentication.OpenIdConnect -Version 6.0.1
 Install-Package Microsoft.AspNetCore.Components.Authorization -Version 6.0.1
 ```
-8. Add a Login and Logout Razor pages
-9. Add Login Redirect Blazor Component
-10. Setup App.razor to enable Authorization
-11. Show/Hide the NavMenu items based on Authorization
-12. Authorize a Blazor component
 
+2. Add a Login and Logout Razor pages
+
+3. Add Login Redirect Blazor Component
+
+4. Setup App.razor to enable Authorization
+
+5. Show/Hide the NavMenu items based on Authorization
+
+6. Authorize a Blazor component
